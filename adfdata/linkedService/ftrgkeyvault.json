@@ -1,0 +1,10 @@
+{
+	"name": "ftrgkeyvault",
+	"properties": {
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://ftrgkeyvault.vault.azure.net/"
+		}
+	}
+}

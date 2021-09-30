@@ -7,6 +7,14 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "ftrg-ADF"
 		},
+		"ftrgadls_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ftrgadls'"
+		},
+		"ftrgadls_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://ftrgadls.dfs.core.windows.net"
+		},
 		"ftrgkeyvault_properties_typeProperties_baseUrl": {
 			"type": "string",
 			"defaultValue": "https://ftrgkeyvault.vault.azure.net/"
@@ -16,6 +24,25 @@
 		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
 	},
 	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/ftrgadls')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('ftrgadls_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('ftrgadls_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ftrgkeyvault')]"
+			]
+		},
 		{
 			"name": "[concat(parameters('factoryName'), '/ftrgkeyvault')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",

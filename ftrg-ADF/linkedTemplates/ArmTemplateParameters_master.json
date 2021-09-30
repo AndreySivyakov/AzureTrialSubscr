@@ -5,6 +5,12 @@
 		"factoryName": {
 			"value": "ftrg-ADF"
 		},
+		"ftrgadls_accountKey": {
+			"value": ""
+		},
+		"ftrgadls_properties_typeProperties_url": {
+			"value": "https://ftrgadls.dfs.core.windows.net"
+		},
 		"ftrgkeyvault_properties_typeProperties_baseUrl": {
 			"value": "https://ftrgkeyvault.vault.azure.net/"
 		},
